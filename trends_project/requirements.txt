@@ -1,0 +1,8 @@
+# backend
+django
+
+# etc
+jupyter
+pytrends
+pandas
+plotly
