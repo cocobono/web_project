@@ -1,0 +1,16 @@
+<html>
+<head>
+<h1>Google Trends API</h1>
+</head>
+<body>
+  <form method="get">
+    <input type="text" name="keyword">
+    <button type="submit">search for keyword</button>
+  </form>
+  {% if graph %}
+  <div style="width:600;height:500">
+      {{ graph|safe }}
+  </div>
+  {% endif %}
+</body>
+</html>
