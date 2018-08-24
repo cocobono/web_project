@@ -1,8 +1,8 @@
 # backend
 django
+djangorestframework
 
 # etc
+plotly
 jupyter
 pytrends
-pandas
-plotly

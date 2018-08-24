@@ -1,4 +1,3 @@
-import pandas as pd
 from pytrends.request import TrendReq
 
 
@@ -20,7 +19,7 @@ class GoogleTrends:
         if not keyword:
             return None
 
-        keywords = []
+        keywords = list()
         keywords.append(keyword)
         self.pytrends.build_payload(kw_list=keywords,
                                     **kwargs)
@@ -34,7 +33,7 @@ class GoogleTrends:
         return response
 
 
-      #TODO: create option csv report download 
+      #TODO: create option csv report download
 #     def create_report(self, response):
 #
 # #         df = response.drop(columns=['isPartial'])
