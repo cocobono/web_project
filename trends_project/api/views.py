@@ -17,13 +17,19 @@ def trend(request):
         return render(request, 'api/googletrends.html')
     else:
         keyword = request.GET['keyword']
+        timeframe = "today 5-y"
+
+        if request.GET["from"] and request.GET["to"]:
+            timeframe: str = request.GET["from"] + " " + request.GET["to"]
 
         api = GoogleTrends()
-        df = api.get_response(keyword)
+        df = api.get_response(keyword=keyword,
+                              timeframe=timeframe)
 
         if request.GET["action_list"] == "download":
             buffer = io.StringIO()
-            df.to_csv(buffer)
+            df.to_csv(path_or_buf=buffer,
+                      index=False)
             buffer.seek(0)
 
             response = HttpResponse(buffer,

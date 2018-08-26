@@ -9,18 +9,24 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 $(function() {
+  var today = new Date()
     $( "#from" ).datepicker({
-      defaultDate: "+1w",
+      dateFormat: "yy-mm-dd",
+      defaultDate: "-1w",
       changeMonth: true,
+      changeYear: true,
       numberOfMonths: 1,
       onClose: function( selectedDate ) {
         $( "#to" ).datepicker( "option", "minDate", selectedDate );
       }
     });
     $( "#to" ).datepicker({
-      defaultDate: "+1w",
+      dateFormat: "yy-mm-dd",
+      defaultDate: today,
       changeMonth: true,
+      changeYear: true,
       numberOfMonths: 1,
+      maxDate: today,
       onClose: function( selectedDate ) {
         $( "#from" ).datepicker( "option", "maxDate", selectedDate );
       }
