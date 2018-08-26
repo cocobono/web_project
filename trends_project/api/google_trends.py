@@ -14,18 +14,14 @@ class GoogleTrends:
         """Default keyword arguments are used, unless chosen my user.
         Search must have at least one keyword and can have up to 5
         parameters: timeframe, geo, cat, tz, gprop"""
-        #TODO: Handle multiple keywords, other parameters
-
         if not keyword:
             return None
 
-        keywords = list()
-        keywords.append(keyword)
-        self.pytrends.build_payload(kw_list=keywords,
+        self.pytrends.build_payload(kw_list=[keyword],
                                     **kwargs)
         # timeframe syntax
         response = self.pytrends.interest_over_time()
-        response = response.reset_index()
+        response.reset_index(inplace=True)
 
         if collect:
             self._collection.append(response)
